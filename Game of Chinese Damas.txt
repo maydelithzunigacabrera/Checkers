@@ -1,0 +1,184 @@
+#include <iostream>
+#include <conio.h>
+#include <vector>
+
+using namespace std;
+
+void MapaDeKarnaugh2Variable(vector<int> DatosDeVerdad) {
+
+	vector<int> Grupo1, Grupo2;
+	int IdentificadorDeFuncion = 0;
+
+	for (int i = 0; i < 2; i++) {
+		Grupo1.push_back(DatosDeVerdad[i]);
+		Grupo2.push_back(DatosDeVerdad[i + 2]);
+	}
+
+	cout << endl << endl;
+	cout << "\t X \\ Y      0       1      " << endl;
+	cout << "\t   0       [0]     [1]     " << endl;
+	cout << "\t   1       [2]     [3]     " << endl;
+	cout << endl << endl;
+
+	cout << "\t X \\ Y      0       1      " << endl;
+	cout << "\t   0        " << Grupo1[0] << "       " << Grupo1[1] << "      " << endl;
+	cout << "\t   1        " << Grupo2[0] << "       " << Grupo2[1] << "      " << endl;
+	cout << endl << endl;
+
+	for (int i = 0; i < 2; i++) {
+		IdentificadorDeFuncion += Grupo1[i] + Grupo2[i];
+	}
+
+	//char d = getche();
+
+	cout << endl << endl;
+	cout << "\t\t INFORMES:" << endl << endl;
+
+	switch (IdentificadorDeFuncion)
+	{
+	case 0:
+		cout << "No hay agrupaciones" << endl;
+		cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n = 0" << endl;
+		break;
+	case 1:
+		if (Grupo1[0] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 1: [0]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =   X'Y'" << endl;
+		}
+		else if (Grupo1[1] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 1: [1]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =   X'Y" << endl;
+		}
+		else if (Grupo2[0] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 1: [2]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =   XY'" << endl;
+		}
+		else if (Grupo2[1] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 1: [3]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =   XY" << endl;
+		}
+		break;
+	case 2:
+		if (Grupo1[0] == 1 && Grupo2[1] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 1: [0]" << endl;
+			cout << "Hay agrupaci" << char(162) << "n de 1: [2]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    X'Y' + XY'" << endl;
+		}
+		else if (Grupo1[1] == 1 && Grupo2[0] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 1: [1]" << endl;
+			cout << "Hay agrupaci" << char(162) << "n de 1: [2]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    X'Y + XY'" << endl;
+		}
+		else if (Grupo1[0] == 1 && Grupo1[1] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 2: [0,1]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    X'" << endl;
+		}
+		else if (Grupo2[0] == 1 && Grupo2[1] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 2: [2,3]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    X" << endl;
+		}if (Grupo1[0] == 1 && Grupo2[0] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 2: [0,2]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    Y'" << endl;
+		}
+		else if (Grupo1[1] == 1 && Grupo2[1] == 1) {
+			cout << "Hay agrupaci" << char(162) << "n de 2: [1,3]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    Y" << endl;
+		}
+		break;
+	case 3:
+		if (Grupo1[0] == 0) {
+			cout << "Hay agrupaci" << char(162) << "n de 2: [2,3]" << endl;
+			cout << "Hay agrupaci" << char(162) << "n de 2: [1,3]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    X + Y" << endl;
+		}
+		else if (Grupo1[1] == 0) {
+			cout << "Hay agrupaci" << char(162) << "n de 2: [2,3]" << endl;
+			cout << "Hay agrupaci" << char(162) << "n de 2: [0,2]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    X + Y'" << endl;
+		}
+		else if (Grupo2[0] == 0) {
+			cout << "Hay agrupaci" << char(162) << "n de 2: [0,1]" << endl;
+			cout << "Hay agrupaci" << char(162) << "n de 2: [1,3]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    X' + Y" << endl;
+		}
+		else if (Grupo2[1] == 0) {
+			cout << "Hay agrupaci" << char(162) << "n de 2: [0,1]" << endl;
+			cout << "Hay agrupaci" << char(162) << "n de 2: [0,2]" << endl;
+			cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n =    X' + Y'" << endl;
+		}
+		break;
+	case 4:
+		cout << "Hay agrupaci" << char(162) << "n de 4: [0,1,2,3]" << endl;
+		cout << "Simplificaci" << char(162) << "n de la funci" << char(162) << "n = 1" << endl;
+		Grupo1 = Grupo2 = { 0,0 };
+		break;
+	default:
+		break;
+	}
+
+	//char g = getche();
+}
+
+void TablaDeVerdad2(vector<int>DatosDeVerdad) {
+
+	int aux = 0;
+
+	cout << endl << endl;
+	cout << "\t X " << "\t Y " << "        f(x,y)" << endl;
+	do {
+		cout << "\t 0 " << "\t 0 " << "  [0]      ";
+		cin >> aux;
+	} while (!(aux == 0 || aux == 1));
+	DatosDeVerdad.push_back(aux);
+	do {
+		cout << "\t 0 " << "\t 1 " << "  [1]      ";
+		cin >> aux;
+	} while (!(aux == 0 || aux == 1));
+	DatosDeVerdad.push_back(aux);
+	do {
+		cout << "\t 1 " << "\t 0 " << "  [2]      ";
+		cin >> aux;
+	} while (!(aux == 0 || aux == 1));
+	DatosDeVerdad.push_back(aux);
+	do {
+		cout << "\t 1 " << "\t 1 " << "  [3]      ";
+		cin >> aux;
+	} while (!(aux == 0 || aux == 1));
+	DatosDeVerdad.push_back(aux);
+
+	MapaDeKarnaugh2Variable(DatosDeVerdad);
+}
+
+int main() {
+
+	vector<int> DatosDeVerdad;
+	int opc;
+
+	cout << endl << endl << endl;
+	cout << "\t\tMENU - Mapa de Karnaugh" << endl << endl;
+	cout << "\t\t\t1) Realizar mapa de 2 variables" << endl;
+	cout << "\t\t\t2) Realizar mapa de 3 variables" << endl;
+	cout << "\t\t\t3) Realizar mapa de 4 variables" << endl;
+	cout << "\t\t\t4) Salir" << endl << endl;
+	do {
+		cout << "Ingrese la opci" << char(162) << "n que desea : ";
+		cin >> opc;
+	} while (opc < 1 || opc > 4);
+	switch (opc) {
+	case 1:
+		system("cls");
+		TablaDeVerdad2(DatosDeVerdad);
+		break;
+	case 2:
+		cout << "2" << endl;
+		break;
+	case 3:
+		cout << "3" << endl;
+		break;
+	case 4:
+		return 0;
+		break;
+	}
+	char g = _getch();
+	return 0;
+}
